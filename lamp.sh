@@ -391,9 +391,10 @@ initialization() {
 	echo -e '\033[01;31m5\033[01;34m) \033[01;37mRust & SSL'
 	echo -e '\033[01;31m6\033[01;34m) \033[01;37mNothing, I have everything!'
 	echo -e ''
-	PS3='Please select from the packages:'
+	PS3='Please select from the packages: '
 	choices=("General" "Curl" "Parsing" "Python" "PHP packages" "Nothing" "AdditionalPkgs")
-	select choice in "${choices[@]}"; do
+	selection=( "1" "2" "3" "4" "5" "6" "7" "q")
+	select choice in "${selection[@]}"; do
 		case $choice in
 			"1")
 				echo 'Installing required files'
