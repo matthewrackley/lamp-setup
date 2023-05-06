@@ -380,7 +380,7 @@ initialization() {
 	echo -e '\033[01;37mThis is the initialization step.'
 	echo -e '\033[01;37mThis step should hopefully cover'
 	echo -e '\033[01;37mall of your package dependencies.'
-	sleep 7
+	sleep 3
 	clear
 	init
 	echo -e '\033[01;37mPackage Selection:'
@@ -394,8 +394,8 @@ initialization() {
 	PS3='Please select from the packages: '
 	choices=("General" "Curl" "Parsing" "Python" "PHP packages" "Nothing" "AdditionalPkgs")
 	selection=( "1" "2" "3" "4" "5" "6" "7" "q")
-	select choice in "${selection[@]}"; do
-		case $choice in
+	select selection in "${selection[@]}"; do
+		case $selection in
 			"1")
 				echo 'Installing required files'
 				echo ''
