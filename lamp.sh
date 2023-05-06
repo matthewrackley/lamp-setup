@@ -391,8 +391,7 @@ initialization() {
 	echo -e '\033[01;31m5\033[01;34m) \033[01;37mRust & SSL'
 	echo -e '\033[01;31m6\033[01;34m) \033[01;37mNothing, I have everything!'
 	echo -e ''
-	PS3='Please select from the packages: '
-	choice=$(PS3 -u)
+	read -p "Please select a package: " choice
 		case $choice in
 			"1")
 				echo 'Installing required files'
