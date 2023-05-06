@@ -1,0 +1,71 @@
+###
+### Virtual Host configuration for an X2Go Session Broker
+###
+
+#
+# Make sure to disabled /etc/apache2/x2gobroker-wsgi completely if you
+# prefer setting up the X2Go Session Broker as a virtual host.
+#
+
+<VirtualHost *:443>
+
+    ServerName localhost
+    ServerAdmin webmaster@localhost
+
+    # enable debugging
+    #SetEnv X2GOBROKER_DEBUG off
+
+    # the default user/group that this WSGI application runs as
+    #X2GOBROKER_DAEMON_USER=x2gobroker
+    #X2GOBROKER_DAEMON_GROUP=x2gobroker
+    WSGIDaemonProcess x2gobroker user=x2gobroker group=x2gobroker processes=5 threads=15
+    WSGIPassAuthorization On
+
+    # default broker backend (default: inifile)
+    #SetEnv X2GOBROKER_DEFAULT_BACKEND zeroconf
+    #SetEnv X2GOBROKER_DEFAULT_BACKEND inifile
+    #SetEnv X2GOBROKER_DEFAULT_BACKEND ldap
+    #SetEnv X2GOBROKER_DEFAULT_BACKEND <some-other-broker-backend>
+
+    # path to the X2Go Session Broker's configuration file
+    #SetEnv X2GOBROKER_CONFIG /etc/x2go/x2gobroker.conf
+
+    # path to the X2Go Session Broker's session profiles file (when using the inifile backend)
+    #SetEnv X2GOBROKER_SESSIONPROFILES /etc/x2go/broker/x2gobroker-sessionprofiles.conf
+
+    # path to the X2Go Session Broker's agent command
+    #SetEnv X2GOBROKER_AGENT_CMD /usr/lib/x2go/x2gobroker-agent
+
+    # authentication socket of the X2Go Broker's PAM Authentication Service
+    #SetEnv X2GOBROKER_AUTHSOCKET /run/x2gobroker/x2gobroker-authservice.socket
+
+    # if you have to-be-statically-served files somewhere below the broker URL
+    #Alias /x2gobroker/static /some/static/path/
+
+    WSGIScriptAlias / /usr/lib/x2gobroker/wsgi/x2goroker-wsgi
+    WSGIProcessGroup x2gobroker
+
+    <Directory /usr/lib/x2gobroker/wsgi>
+
+        Require local
+
+        Options +FollowSymLinks
+        Options -Indexes
+
+        SSLOptions +StdEnvVars
+
+    </Directory>
+
+    SSLEngine on
+    #   SSL Cipher Suite:
+    SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+    #   Server Certificate:
+    SSLCertificateFile /etc/x2go/broker/ssl/broker.crt
+    #   Server Private Key:
+    SSLCertificateKeyFile /etc/x2go/broker/ssl/broker.key
+    #SSLCertificateChainFile /etc/x2go/broker/ssl/cacert.key
+    #SetEnvIf User-Agent ".*MSIE.*" \
+    #    nokeepalive ssl-unclean-shutdown \
+    #    downgrade-1.0 force-response-1.0
+
+</VirtualHost>

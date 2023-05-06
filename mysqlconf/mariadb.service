@@ -1,0 +1,14 @@
+[Unit]
+Description=MariaDB database server
+After=network.target mariadb.socket
+
+[Service]
+User=mysql
+Group=mysql
+Type=simple
+ExecStart=/usr/bin/mysqld --defaults-file=/opt/server/mysql/my.cnf
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/opt/server/mysql/tmp/mysqld.pid
+
+[Install]
+WantedBy=multi-user.target

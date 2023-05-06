@@ -1,0 +1,8 @@
+[Unit]
+Description=MariaDB Socket for local connections
+
+[Socket]
+ListenStream=/opt/server/mysql/tmp/mysqld.sock
+
+[Install]
+WantedBy=sockets.target

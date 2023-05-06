@@ -1,0 +1,4 @@
+[server]
+
+plugin_load_add=provider_lzo
+provider_lzo=force_plus_permanent

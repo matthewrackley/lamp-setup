@@ -1,0 +1,19 @@
+#
+# This group is read by the client library
+# Use it for options that affect all clients, but not the server
+#
+
+[client]
+# Example of client certificate usage
+ssl-cert = /opt/server/mysql/conf/certs/rackley.app.crt
+ssl-key  = /opt/server/mysql/conf/certs/rackley.app.key
+#
+# Allow only TLS encrypted connections
+ssl-verify-server-cert = on
+
+# This group is *never* read by mysql client library, though this
+# /etc/mysql/mariadb.cnf.d/client.cnf file is not read by Oracle MySQL
+# client anyway.
+# If you use the same .cnf file for MySQL and MariaDB,
+# use it for MariaDB-only client options
+[client-mariadb]
