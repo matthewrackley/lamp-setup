@@ -392,13 +392,8 @@ initialization() {
 	echo -e '\033[01;31m6\033[01;34m) \033[01;37mNothing, I have everything!'
 	echo -e ''
 	PS3='Please select from the packages: '
-	choices=("General" "Curl" "Parsing" "Python" "PHP packages" "Nothing" "AdditionalPkgs")
-	selection=( "1" "2" "3" "4" "5" "6" "7" "q")
-	for i in "${choices[@]}"
-	do
-	echo "${choices[$i]}"
-	done
-		case $choices in
+	choice=$(PS3 -u)
+		case $choice in
 			"1")
 				echo 'Installing required files'
 				echo ''
