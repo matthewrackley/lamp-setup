@@ -394,9 +394,11 @@ initialization() {
 	PS3='Please select from the packages: '
 	choices=("General" "Curl" "Parsing" "Python" "PHP packages" "Nothing" "AdditionalPkgs")
 	selection=( "1" "2" "3" "4" "5" "6" "7" "q")
-	for i in "${!choices[@]}"
+	for i in "${choices[@]}"
 	do
-		case $i in
+	echo "${choices[$i]}"
+	done
+		case $choices in
 			"1")
 				echo 'Installing required files'
 				echo ''
@@ -494,7 +496,6 @@ initialization() {
 				echo "Invalid options!"
 				;;
 		esac
-	done
 };
 additionalpkgs() {
 	clear
