@@ -389,7 +389,7 @@ initialization() {
 	echo -e '\033[01;31m5\033[01;34m) \033[01;37mRust & SSL'
 	echo -e '\033[01;31m6\033[01;34m) \033[01;37mNothing, I have everything!'
 	echo -e ''
-	read -p "Please select a Dependencies: " choice
+	read -p "Please select dependencies: " choice
 		case $choice in
 			"1")
 				echo 'Installing required files'
@@ -408,11 +408,6 @@ initialization() {
 				echo ''
 				sleep 2
 				sudo apt build-dep mariadb-server -y
-				echo ''
-				echo 'PCRE2'
-				echo ''
-				sleep 2
-				sudo apt build-dep pcre2 -y
 				echo ''
 				echo 'NodeJS'
 				echo ''
@@ -499,7 +494,7 @@ additionalpkgs() {
 	echo -e '         \033[01;31m1\033[01;34m) \033[01;37mCertbot          \033[01;31m2\033[01;34m) \033[01;37mDocker'
 	echo -e '         \033[01;31m3\033[01;34m) \033[01;37mphpMyAdmin       \033[01;31m4\033[01;34m) \033[01;37mNode.js'
 	echo -e '         \033[01;31m5\033[01;34m) \033[01;37mApache           \033[01;31m6\033[01;34m) \033[01;37mMariaDB'
-	echo -e '                            \033[01;31m7\033[01;34m) \033[01;37mPHP'
+	echo -e '         \033[01;31m7\033[01;34m) \033[01;37mPHP              \033[01;31mq\033[01;34m) \033[01;37mQuit'
 	echo -e ''
 	PS3='Please enter your choice: '
 	read -p "Please select a tool: " choice
