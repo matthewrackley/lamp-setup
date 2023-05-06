@@ -475,6 +475,8 @@ initialization() {
 					php-raphf-dev php-redis-all-dev php-rrd-all-dev php-smbclient-all-dev php-solr-all-dev php-ssh2-all-dev \
 					php-stomp-all-dev php-tideways-all-dev php-uopz-all-dev php-uploadprogress-all-dev php-uuid-all-dev \
 					php-xdebug-all-dev php-xmlrpc-all-dev php-yaml-all-dev -y
+                break
+                ;;
 			"6")
 				maincmd
 				break
@@ -650,7 +652,7 @@ initialization
 
 
 
-
+temp() {
 
 /opt/server/mysql/var/support/systemd/mariadb.service
 /opt/server/mysql/var/support/systemd/mariadb.socket
@@ -682,5 +684,5 @@ sed -i -e 's/PATH=(.*)/MYSQLPATH=\/opt\/server\/mysql\/bin\nPATH=$MYSQLPATH:\1/g
 
 `PHP configuration`
 sed -i -e 's/PATH=(.*)/PHPPATH=\/opt\/server\/php\/bin\nPATH=$PHPPATH:\1/g' ~/.bashrc
-
+}
 
