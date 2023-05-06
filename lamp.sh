@@ -325,9 +325,7 @@ maincmd() {
 	echo -e '         \033[01;31m7\033[01;34m) \033[01;37mPHP              \033[01;31m8\033[01;34m) \033[01;37mMain Menu'
 	echo -e '                                \033[01;31mq\033[01;34m) \033[01;37mQuit'
 	echo -e ''
-	PS3='Please enter your choice: '
-	choices=("Pre-Downloads" "PCRE2" "libExpat" "NodeJS" "Apache" "MariaDB" "PHP" "Return to Main Menu" "Quit")
-	select choice in "${choices[@]}"; do
+	read -p "Please select a package: " choice
 		case $choice in
 			"1")
 				predownload
@@ -391,7 +389,7 @@ initialization() {
 	echo -e '\033[01;31m5\033[01;34m) \033[01;37mRust & SSL'
 	echo -e '\033[01;31m6\033[01;34m) \033[01;37mNothing, I have everything!'
 	echo -e ''
-	read -p "Please select a package: " choice
+	read -p "Please select a Dependencies: " choice
 		case $choice in
 			"1")
 				echo 'Installing required files'
@@ -504,8 +502,7 @@ additionalpkgs() {
 	echo -e '                            \033[01;31m7\033[01;34m) \033[01;37mPHP'
 	echo -e ''
 	PS3='Please enter your choice: '
-	choices=("certbot" "Docker" "Composer & phpMyAdmin" "NodeJS" "Apache" "MariaDB" "")
-	select choice in "${choices[@]}"; do
+	read -p "Please select a tool: " choice
 		case $choice in
 			"1")
 				certbotsetup
@@ -585,7 +582,7 @@ echo -e '\033[01;36m#   \033[01;31m██\033[01;33m║ \033[01;31m██\033[01
 echo -e '\033[01;36m#   \033[01;31m██\033[01;33m║ \033[01;31m██\033[01;33m║╚\033[01;31m██\033[01;33m╗\033[01;31m██\033[01;33m║ \033[01;31m██\033[01;33m║    \033[01;31m██\033[01;33m║       \033[01;36m#'
 echo -e '\033[01;36m#   \033[01;31m██\033[01;33m║ \033[01;31m██\033[01;33m║ ╚\033[01;31m████\033[01;33m║ \033[01;31m██\033[01;33m║    \033[01;31m██\033[01;33m║ ╔\033[01;31m██\033[01;33m╗  \033[01;36m#'
 echo -e '\033[01;36m#   \033[01;33m╚═╝ \033[01;33m╚═╝  \033[01;33m╚═══╝ \033[01;33m╚═╝    ╚═╝\033[01;31m██████ \033[01;36m#'
-echo -e '\033[01;36m# LAMP+ Initialization Step  ╚\033[01;31m██\033[01;33m╝   \033[01;36m#'
+echo -e '\033[01;36m# \033[01;37mLAMP+ Initialization Step   \033[01;33m╚\033[01;31m██\033[01;33m╝   \033[01;36m#'
 echo -e '\033[01;36m#####################################'
 }
 configplus() {
