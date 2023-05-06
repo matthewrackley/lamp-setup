@@ -615,7 +615,7 @@ echo -e '\033[01;36m##########################################################'
 }
 
 # Tools
-certbot setup() {
+certbotsetup() {
 	sudo apt install certbot -y
 	python
 	wget -O bncert-linux-x64.run https://downloads.bitnami.com/files/bncert/latest/bncert-linux-x64.run
